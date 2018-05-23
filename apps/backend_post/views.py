@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from .models import Articles,Category,Person_tags
 from django.core.paginator import Paginator
@@ -14,13 +15,7 @@ def index(request):
     # 构件页码信息
     page_list = get_page_list(total_page,p_index)
     # 查询所有的分类 分类名和每个分类下面的文章数
-    category_list = Category.objects.all()
-    cate_num_name = []
-    for category in category_list:
-        cate = {}
-        cate['name'] = category.name
-        cate['count'] = len(category.articles_set.all())
-        cate_num_name.append(cate)
+    cate_num_name = category_list()
     # 归档 年月 和文章数
     context = {
         'title':'myblog',
@@ -33,6 +28,21 @@ def index(request):
     }
     print(month_list())
     return render(request,'index.html',context=context)
+
+def detail(requset,article_id):
+    article = Articles.objects.filter(pk=article_id)
+    if not article:
+        return Http404()
+    article = article[0]
+    context = {
+        'title':article.title,
+        'article':article,
+        'year_month_num':month_list(),
+        'cate_num_name':category_list(),
+    }
+    return render(requset,'singlepost.html',context)
+
+
 
 def month_list():
     articles = Articles.objects.all()
@@ -47,3 +57,13 @@ def month_list():
         year_month_number.append([key[0],key[1],counter[key]])
     year_month_number.sort(reverse=True)
     return year_month_number
+
+def category_list():
+    category_list = Category.objects.all()
+    cate_num_name = []
+    for category in category_list:
+        cate = {}
+        cate['name'] = category.name
+        cate['count'] = len(category.articles_set.all())
+        cate_num_name.append(cate)
+    return cate_num_name

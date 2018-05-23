@@ -3,6 +3,7 @@
 <div class="col-md-9">
 <div class="blog-main">
     {% for article in article_list %}
+        <a href="/zjh/details/{{ article.id }}/">
  <div class="heading-blog">
     {{ article.title }}
 </div>
@@ -12,6 +13,7 @@
         <div class="blog-txt">
         {{ article.content }}
         </div>
+        </a>
     <div class="blog-info">
         <span class="label label-primary">Posted on {{ article.editor_time }}</span>
         <span class="label label-success">{{ article.category.name }}</span>
@@ -31,12 +33,7 @@
     {% for p in page_list %}
         <li {% if p == p_index %} class="active" ><a href="###"{% elif p != p_index %}<a href="" {% endif %}>{{ p }} <span class="sr-only">(current)</span></a></li>
     {% endfor %}
-{#        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>#}
-{#        <li><a href="#">2 <span class="sr-only"></span></a></li>#}
-{#        <li><a href="#">3 <span class="sr-only"></span></a></li>#}
-{#        <li><a href="#">4 <span class="sr-only"></span></a></li>#}
-{#        <li><a href="#">5 <span class="sr-only"></span></a></li>#}
-{#        <li><a href="#"><span aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>#}
+
     </ul>
 </nav>
  <!--PAGING  END -->

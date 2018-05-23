@@ -21,3 +21,4 @@ urlpatterns = [
     path(r'markdownx/',include('markdownx.urls')),
     path(r'zjh/',include('backend_post.urls')),
 ]
+print(urlpatterns)
