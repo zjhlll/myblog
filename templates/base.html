@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>{{ title }}</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="/static/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="/static/assets/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <section class="header-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/static/assets/img/person.jpg" class="img-circle img-responsive" />
+                </div>
+                <div class="col-md-5 text-center">
+                    <h1><strong>zjh</strong></h1>
+                    <h4>python developer</h4>
+                </div>
+                <div class="col-md-5">
+                    <h3>WHO M I :</h3>
+
+                    I am a 26 years old guy who loves bloggging and programming
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--HOME SECTION END-->
+
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% block contont %}
+                
+                {% endblock %}
+                <div class="col-md-3">
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>个人分类</strong>
+                        </li>
+                        {% for cate in  cate_num_name %}
+                        <li class="list-group-item">
+                            <span class="badge">{{ cate.count }}</span>
+                            {{ cate.name }}
+                        </li>
+                        {% endfor %}
+                        <li class="list-group-item">
+                            <strong>归档</strong>
+                        </li>
+                    {% for y_m_n in year_month_num %}
+                                <li class="list-group-item">
+                            <span class="badge">
+                                {{ y_m_n.2 }}
+                            </span>
+                                {{ y_m_n.0 }}年-{{ y_m_n.1 }}月
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    <br />
+
+
+
+                    <br />
+                    <div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Subscribe For Updates</h3>
+                            </div>
+                            <div class="panel-body">
+                                <input type="text" class="form-control" placeholder="Your Email" />
+                                <hr />
+                                <a href="#" class="btn btn-info btn-sm btn-block">subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center set-foot">
+                &copy 2018 zjh| bolg
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

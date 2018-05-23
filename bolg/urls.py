@@ -19,5 +19,5 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'markdownx/',include('markdownx.urls')),
-    path(r'/',include('backend_post.urls')),
+    path(r'zjh/',include('backend_post.urls')),
 ]
