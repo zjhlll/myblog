@@ -29,18 +29,18 @@
 <nav>
     <ul class="pagination">
 
-    {% if p_index == 1 %}
+    {% if p_index == 1 or total_page == 1 %}
     <li class="disabled" >
         <a href="###"><span aria-hidden="true">&lt;&lt;</span></a></li>
     {% else %}
         <li class="active">
-               <a href="/zjh/index/?page={{ p_index|add:-1 }}"><span aria-hidden="true">&lt;&lt;</span></a></li>
+               <a href="/zjh/list/{{ title }}/?page={{ p_index|add:-1 }}"><span aria-hidden="true">&lt;&lt;</span></a></li>
     {% endif %}
     {% for p in page_list %}
         {% if p == p_index %}
             <li class="disabled" ><a ><span >{{ p }}</span></a></li>
         {% else %}
-        <li ><a href="/zjh/index/?page={{ p }}"><span >{{ p }}</span></a></li>
+        <li ><a href="/zjh/list/{{ title }}/?page={{ p }}"><span >{{ p }}</span></a></li>
         {% endif %}
     {% endfor %}
     {% if p_index == total_page or total_page == 1 %}
@@ -48,7 +48,7 @@
         <a href="###"><span aria-hidden="true">&gt;&gt;</span></a></li>
     {% else %}
       <li class="active" >
-        <a href="/zjh/index/?page={{ p_index|add:1 }}"><span aria-hidden="true">&gt;&gt;</span></a></li>
+        <a href="/zjh/list/{{ title }}?page={{ p_index|add:1 }}"><span aria-hidden="true">&gt;&gt;</span></a></li>
     {% endif %}
     </ul>
 </nav>

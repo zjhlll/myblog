@@ -53,10 +53,12 @@
                             <strong>个人分类</strong>
                         </li>
                         {% for cate in  cate_num_name %}
+                        <a href="/zjh/list/{{ cate.name }}">
                         <li class="list-group-item">
-                            <span class="badge">{{ cate.count }}</span>
+                            <span class="badge"> {{ cate.count }}</span>
                             {{ cate.name }}
                         </li>
+                        </a>
                         {% endfor %}
                         <li class="list-group-item">
                             <strong>归档</strong>
